@@ -1,0 +1,5 @@
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\NotQuiteAzure.Tests.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\NotQuiteAzure.Tests.pdb
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\obj\Debug\NotQuiteAzure.Tests.csprojResolveAssemblyReference.cache
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\obj\Debug\NotQuiteAzure.Tests.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\obj\Debug\NotQuiteAzure.Tests.pdb
