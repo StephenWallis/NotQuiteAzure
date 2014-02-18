@@ -1,0 +1,4 @@
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.pdb
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.pdb
