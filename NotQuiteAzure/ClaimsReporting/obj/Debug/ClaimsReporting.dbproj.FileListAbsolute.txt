@@ -6,3 +6,11 @@ C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\Claims
 C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting.deploymanifest
 C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting.dbschema
 C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\obj\Debug\ClaimsReporting.dbschema
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting_Script.PreDeployment.sql
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting_Script.PostDeployment.sql
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting_Database.sqlsettings
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting_Database.sqldeployment
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting_Database.sqlcmdvars
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting.deploymanifest
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\sql\debug\ClaimsReporting.dbschema
+C:\NotQuiteAzure\NotQuiteAzure\ClaimsReporting\obj\Debug\ClaimsReporting.dbschema
