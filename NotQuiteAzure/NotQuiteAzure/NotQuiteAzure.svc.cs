@@ -8,25 +8,21 @@ using System.Text;
 
 namespace NotQuiteAzure
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     public class NotQuiteAzure : INotQuiteAzure
     {
-        public string GetData(int value)
+        public Customer Register(int id)
         {
-            return string.Format("You entered: {0}", value);
+            throw new NotImplementedException();
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public bool CustomerCallRequest(string customerNumber)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            throw new NotImplementedException();
+        }
+
+        public bool RecordClaim(Claim claim)
+        {
+            throw new NotImplementedException();
         }
     }
 }
