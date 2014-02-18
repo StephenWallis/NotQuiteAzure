@@ -69,6 +69,7 @@
       <DependentUpon>NotQuiteAzure.svc</DependentUpon>
     </Compile>
     <Compile Include="INotQuiteAzure.cs" />
+    <Compile Include="Policy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

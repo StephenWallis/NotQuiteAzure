@@ -10,7 +10,7 @@ namespace NotQuiteAzure
 {
     public class NotQuiteAzure : INotQuiteAzure
     {
-        public Customer Register(int id)
+        public Customer Register(string id)
         {
             throw new NotImplementedException();
 
@@ -19,7 +19,7 @@ namespace NotQuiteAzure
             // return the customer information, including policies collection it contains (convert db object to customer)
         }
 
-        public bool CustomerCallRequest(int id, string customerPhone)
+        public bool CustomerCallRequest(string id, string customerPhone)
         {
             throw new NotImplementedException();
 
