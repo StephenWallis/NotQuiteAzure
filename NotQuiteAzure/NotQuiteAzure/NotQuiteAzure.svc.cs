@@ -10,16 +10,13 @@ namespace NotQuiteAzure
 {
     public class NotQuiteAzure : INotQuiteAzure
     {
-        public Customer Register(string id)
+        public Customer Register(string customerId)
         {
-            throw new NotImplementedException();
-
-            // retrieve customer from DB for id
-            // if customer not present return null, let Ken deal with it
-            // return the customer information, including policies collection it contains (convert db object to customer)
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            return databaseConnection.GetCustomer(customerId);
         }
 
-        public bool CustomerCallRequest(string id, string customerPhone)
+        public bool CustomerCallRequest(string customerId, string customerPhone)
         {
             throw new NotImplementedException();
 
