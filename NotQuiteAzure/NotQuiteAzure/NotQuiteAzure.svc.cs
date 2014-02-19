@@ -13,23 +13,33 @@ namespace NotQuiteAzure
         public Customer Register(string customerId)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
-            return databaseConnection.GetCustomer(customerId);
+
+            try { return databaseConnection.GetCustomer(customerId); }
+            catch { return new Customer(); }
         }
 
         public bool CustomerCallRequest(string customerId, string customerPhone)
         {
-            throw new NotImplementedException();
+            DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            // post to Calls table the customerPhone & id (stored proc???)
-            // return success of call
+            try 
+            { 
+                databaseConnection.CreateCall(customerId, customerPhone);
+                return true;
+            }
+            catch { return false; }
         }
 
         public bool RecordClaim(Claim claim)
         {
-            throw new NotImplementedException();
+            DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            // post to Claims table the claim info (stored proc???)
-            // return success of call
+            try
+            {
+                databaseConnection.CreateClaim(claim);
+                return true;
+            }
+            catch { return false; }
         }
     }
 }

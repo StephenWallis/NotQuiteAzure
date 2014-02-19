@@ -10,7 +10,8 @@ namespace NotQuiteAzure
         public string id { get; set; }
 
         public DateTime dateOfBirth { get; set; }
-        public string name { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
 	    public string homePhone { get; set; }
 	    public string workPhone { get; set; }
 	    public string address { get; set; }
