@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="48f40845-65f3-4d78-a38c-a3d2a6ee1fc5" name="si553995@GR050310 2014-02-19 15:09:11" runUser="LDSTATDV\si553995" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="e1c8bac6-40c1-4f28-8001-4ac71e491877">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="si553995_GR050310 2014-02-19 15_09_11">
+      <DeploymentItem filename="C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\Moq.4.0.10827\NET40\Moq.dll" />
+      <DeploymentItem filename="C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-02-19T15:09:11.6855546+13:00" queuing="2014-02-19T15:09:11.7165564+13:00" start="2014-02-19T15:09:11.7245569+13:00" finish="2014-02-19T15:09:12.0715767+13:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestRegister" storage="c:\work\itsnotazure\notquiteazure\notquiteazure\notquiteazure.tests\bin\debug\notquiteazure.tests.dll" id="caaf4fa0-4369-ab5d-8b7c-14592f2930b3">
+      <Execution id="43551ecf-f996-4740-bcc1-588a113b8487" />
+      <TestMethod codeBase="C:/Work/ItsNotAzure/NotQuiteAzure/NotQuiteAzure/NotQuiteAzure.Tests/bin/Debug/NotQuiteAzure.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="NotQuiteAzure.Tests.RegisterTests, NotQuiteAzure.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestRegister" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="caaf4fa0-4369-ab5d-8b7c-14592f2930b3" executionId="43551ecf-f996-4740-bcc1-588a113b8487" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="43551ecf-f996-4740-bcc1-588a113b8487" testId="caaf4fa0-4369-ab5d-8b7c-14592f2930b3" testName="TestRegister" computerName="GR050310" duration="00:00:00.0796713" startTime="2014-02-19T15:09:11.7315573+13:00" endTime="2014-02-19T15:09:12.0485754+13:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43551ecf-f996-4740-bcc1-588a113b8487">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method NotQuiteAzure.Tests.RegisterTests.TestRegister threw exception: 
+System.NotSupportedException: Invalid setup on a non-virtual (overridable in VB) member: nqa =&gt; nqa.GetCustomer(It.IsAny&lt;String&gt;())</Message>
+          <StackTrace>    at Moq.Mock.ThrowIfCantOverride(Expression setup, MethodInfo method)
+   at Moq.Mock.&lt;&gt;c__DisplayClass1c`2.&lt;Setup&gt;b__1b()
+   at Moq.PexProtector.Invoke[T](Func`1 function)
+   at Moq.Mock.Setup[T,TResult](Mock mock, Expression`1 expression, Func`1 condition)
+   at Moq.Mock`1.Setup[TResult](Expression`1 expression)
+   at NotQuiteAzure.Tests.RegisterTests.TestRegister() in C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\RegisterTests.cs:line 18
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="91d38243-2425-439f-ace5-7d392fb7cfd2" name="si553995@GR050310 2014-02-19 14:53:12" runUser="LDSTATDV\si553995" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="e1c8bac6-40c1-4f28-8001-4ac71e491877">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="si553995_GR050310 2014-02-19 14_53_12">
+      <DeploymentItem filename="C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\Moq.4.0.10827\NET40\Moq.dll" />
+      <DeploymentItem filename="C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-02-19T14:53:12.2711034+13:00" queuing="2014-02-19T14:53:12.8135050+13:00" start="2014-02-19T14:53:12.8603051+13:00" finish="2014-02-19T14:53:13.2035057+13:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="2" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestMethod1" storage="c:\work\itsnotazure\notquiteazure\notquiteazure\notquiteazure.tests\bin\debug\notquiteazure.tests.dll" id="9fe9f645-8fb6-7797-8c98-a0b1ef9aaa29">
+      <Execution id="e7b0eb4b-5851-4ab7-8b62-24a184d89754" />
+      <TestMethod codeBase="C:/Work/ItsNotAzure/NotQuiteAzure/NotQuiteAzure/NotQuiteAzure.Tests/bin/Debug/NotQuiteAzure.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="NotQuiteAzure.Tests.CustomerCallRequestTests, NotQuiteAzure.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+    <UnitTest name="TestMethod1" storage="c:\work\itsnotazure\notquiteazure\notquiteazure\notquiteazure.tests\bin\debug\notquiteazure.tests.dll" id="2953212e-dbb2-c009-04aa-5b9d233c932c">
+      <Execution id="a935daf5-4f6b-49c4-9951-d957b4622ab1" />
+      <TestMethod codeBase="C:/Work/ItsNotAzure/NotQuiteAzure/NotQuiteAzure/NotQuiteAzure.Tests/bin/Debug/NotQuiteAzure.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="NotQuiteAzure.Tests.RecordClaimTests, NotQuiteAzure.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+    <UnitTest name="TestMethod1" storage="c:\work\itsnotazure\notquiteazure\notquiteazure\notquiteazure.tests\bin\debug\notquiteazure.tests.dll" id="8352a61f-5cc3-8acd-cf26-2aae2e8438fd">
+      <Execution id="bbb508f5-3216-46af-905f-6788e73e7591" />
+      <TestMethod codeBase="C:/Work/ItsNotAzure/NotQuiteAzure/NotQuiteAzure/NotQuiteAzure.Tests/bin/Debug/NotQuiteAzure.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="NotQuiteAzure.Tests.RegisterTests, NotQuiteAzure.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="2953212e-dbb2-c009-04aa-5b9d233c932c" executionId="a935daf5-4f6b-49c4-9951-d957b4622ab1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8352a61f-5cc3-8acd-cf26-2aae2e8438fd" executionId="bbb508f5-3216-46af-905f-6788e73e7591" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9fe9f645-8fb6-7797-8c98-a0b1ef9aaa29" executionId="e7b0eb4b-5851-4ab7-8b62-24a184d89754" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="a935daf5-4f6b-49c4-9951-d957b4622ab1" testId="2953212e-dbb2-c009-04aa-5b9d233c932c" testName="TestMethod1" computerName="GR050310" duration="00:00:00.0098031" startTime="2014-02-19T14:53:12.8759051+13:00" endTime="2014-02-19T14:53:13.0943055+13:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a935daf5-4f6b-49c4-9951-d957b4622ab1">
+    </UnitTestResult>
+    <UnitTestResult executionId="bbb508f5-3216-46af-905f-6788e73e7591" testId="8352a61f-5cc3-8acd-cf26-2aae2e8438fd" testName="TestMethod1" computerName="GR050310" duration="00:00:00.0001444" startTime="2014-02-19T14:53:13.0943055+13:00" endTime="2014-02-19T14:53:13.0943055+13:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bbb508f5-3216-46af-905f-6788e73e7591">
+    </UnitTestResult>
+    <UnitTestResult executionId="e7b0eb4b-5851-4ab7-8b62-24a184d89754" testId="9fe9f645-8fb6-7797-8c98-a0b1ef9aaa29" testName="TestMethod1" computerName="GR050310" duration="00:00:00.0837785" startTime="2014-02-19T14:53:13.0943055+13:00" endTime="2014-02-19T14:53:13.1879057+13:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e7b0eb4b-5851-4ab7-8b62-24a184d89754">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method NotQuiteAzure.Tests.CustomerCallRequestTests.TestMethod1 threw exception: 
+System.NotSupportedException: Invalid setup on a non-virtual (overridable in VB) member: nqa =&gt; nqa.CreateCall(It.IsAny&lt;String&gt;(), It.IsAny&lt;String&gt;())</Message>
+          <StackTrace>    at Moq.Mock.ThrowIfCantOverride(Expression setup, MethodInfo method)
+   at Moq.Mock.&lt;&gt;c__DisplayClass19`1.&lt;Setup&gt;b__18()
+   at Moq.PexProtector.Invoke[T](Func`1 function)
+   at Moq.Mock.Setup[T](Mock mock, Expression`1 expression, Func`1 condition)
+   at Moq.Mock`1.Setup(Expression`1 expression)
+   at NotQuiteAzure.Tests.CustomerCallRequestTests.TestMethod1() in C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\CustomerCallRequestTests.cs:line 18
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

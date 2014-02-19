@@ -3,3 +3,8 @@ C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\No
 C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\obj\Debug\NotQuiteAzure.Tests.csprojResolveAssemblyReference.cache
 C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\obj\Debug\NotQuiteAzure.Tests.dll
 C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\obj\Debug\NotQuiteAzure.Tests.pdb
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\Moq.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\NotQuiteAzure.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\NotQuiteAzure.pdb
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\Moq.pdb
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure.Tests\bin\Debug\Moq.xml
