@@ -43,17 +43,17 @@ namespace NotQuiteAzure
             return customer;
         }
 
-        public void CreateCall(string customerId, string customerPhone)
+        public void CreateCall(string customerNumber, string customerPhone)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {     
                 SqlCommand nonqueryCommand = connection.CreateCommand();
                 connection.Open();
 
-                nonqueryCommand.CommandText = "INSERT INTO Call (cust_ID, phone_number) VALUES (@customerId, @customerPhone)";
+                nonqueryCommand.CommandText = "INSERT INTO Call (custNo, phone_number) VALUES (@customerNumber, @customerPhone)";
 
-                nonqueryCommand.Parameters.Add("@customerId", customerId);
-                nonqueryCommand.Parameters.Add("@customerPhone", customerPhone);
+                nonqueryCommand.Parameters.AddWithValue("@customerNumber", customerNumber);
+                nonqueryCommand.Parameters.AddWithValue("@customerPhone", customerPhone);
                 nonqueryCommand.ExecuteNonQuery();
             }
         }
@@ -67,9 +67,9 @@ namespace NotQuiteAzure
 
                 nonqueryCommand.CommandText = "INSERT INTO Claims (claim_ID, policy_ID, cust_ID) VALUES (@claim_ID, @policy_ID, @cust_ID)";
 
-                nonqueryCommand.Parameters.Add("@claim_ID", claim.id);
-                nonqueryCommand.Parameters.Add("@policy_ID", claim.policyId);
-                nonqueryCommand.Parameters.Add("@cust_ID", claim.customerId);
+                nonqueryCommand.Parameters.AddWithValue("@claim_ID", claim.id);
+                nonqueryCommand.Parameters.AddWithValue("@policy_ID", claim.policyId);
+                nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
                 nonqueryCommand.ExecuteNonQuery();
             }
         }
