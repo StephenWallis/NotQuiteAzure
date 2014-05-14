@@ -37,6 +37,25 @@ namespace NotQuiteAzure
                         customer.workPhone = reader.GetString(5);
                         customer.address = reader.GetString(6);
                         customer.email = reader.GetString(7);
+                        customer.Policies = new List<Policy>();
+                    }
+                }
+
+                using (SqlCommand command2 = new SqlCommand(
+                    "SELECT policy_ID, registration, vehicle_make, vehicle_model FROM Policy " +
+                    "WHERE cust_ID = (SELECT TOP 1 cust_ID FROM Customers WHERE CustNo = " + customerNumber + ")", connection))
+                using (SqlDataReader reader = command2.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        customer.Policies.Add(
+                            new Policy()
+                            {
+                                id = reader.GetString(0),
+                                registration = reader.GetString(1),
+                                make = reader.GetString(2),
+                                model = reader.GetString(3)
+                            });
                     }
                 }
             }
