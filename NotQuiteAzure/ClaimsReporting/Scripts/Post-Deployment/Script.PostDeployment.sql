@@ -13,14 +13,14 @@ Post-Deployment Script Template
 /*Customers*/
 SET DATEFORMAT DMY
 
-INSERT INTO Customers(cust_ID, fName, lName, DOB, home_phone, work_phone, address, email)
-VALUES("1079607", "Bob", "Jones", "12/3/1982", "03 312 8967", "03 345 8077", "128 Random Street, RD24, Kaiapoi, 1895", "bob.jones@hotmail.com");
+INSERT INTO Customers(cust_ID, custNo, Name, DOB, home_phone, work_phone, address, email)
+VALUES("1079607", 0, "Bob Jones", "12/3/1982", "03 312 8967", "03 345 8077", "128 Random Street, RD24, Kaiapoi, 1895", "bob.jones@hotmail.com");
 
-INSERT INTO Customers(cust_ID, fName, lName, DOB, home_phone, work_phone, address, email)
-VALUES("2349981", "Steve", "Hadwin", "12/9/1966", "03 313 4502", "03 344 7867", "Northwood Towers, Ashburton, 7098", "steve.hadwin@hotmail.com");
+INSERT INTO Customers(cust_ID, custNo, Name, DOB, home_phone, work_phone, address, email)
+VALUES("2349981", 1, "Steve Hadwin", "12/9/1966", "03 313 4502", "03 344 7867", "Northwood Towers, Ashburton, 7098", "steve.hadwin@hotmail.com");
 
-INSERT INTO Customers(cust_ID, fName, lName, DOB, home_phone, work_phone, address, email)
-VALUES("1098767", "Tanya", "Smith", "12/3/1967", "03 312 7810", "03 365 0098", "16 Westbourne Street, Ashburton, 9087", "tanya1203@hotmail.com");
+INSERT INTO Customers(cust_ID, custNo, Name, DOB, home_phone, work_phone, address, email)
+VALUES("1098767", 2, "Tanya Smith", "12/3/1967", "03 312 7810", "03 365 0098", "16 Westbourne Street, Ashburton, 9087", "tanya1203@hotmail.com");
 
 /*Policy*/
 INSERT INTO Policy(policy_ID, cust_ID, vehicle_make, vehicle_model, registration)
