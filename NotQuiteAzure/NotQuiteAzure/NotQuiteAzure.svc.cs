@@ -10,11 +10,11 @@ namespace NotQuiteAzure
 {
     public class NotQuiteAzure : INotQuiteAzure
     {
-        public Customer Register(string customerId)
+        public Customer Register(int customerNumber)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            try { return databaseConnection.GetCustomer(customerId); }
+            try { return databaseConnection.GetCustomer(customerNumber); }
             catch { return new Customer(); }
         }
 

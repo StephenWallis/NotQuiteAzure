@@ -14,7 +14,7 @@ namespace NotQuiteAzure
     {
         string connectionString = "Server=(local)\\SQLEXPRESS;Initial Catalog=ClaimsReporting;Integrated Security=SSPI";
 
-        public Customer GetCustomer(string customerId)
+        public Customer GetCustomer(int customerNumber)
         {
             Customer customer = new Customer();
 
@@ -23,15 +23,15 @@ namespace NotQuiteAzure
                 connection.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT TOP 1 cust_ID, fname, lname, DOB, home_phone, work_phone, address, email FROM Customers " +
-                    "WHERE cust_ID = " + customerId, connection))
+                    "SELECT TOP 1 cust_ID, name, custNo, DOB, home_phone, work_phone, address, email FROM Customers " +
+                    "WHERE custNo = " + customerNumber, connection))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         customer.id = reader.GetString(0);
-                        customer.firstName = reader.GetString(1);
-                        customer.lastName = reader.GetString(2);
+                        customer.name = reader.GetString(1);
+                        customer.custNo = reader.GetInt32(2);
                         customer.dateOfBirth = reader.GetDateTime(3);
                         customer.homePhone = reader.GetString(4);
                         customer.workPhone = reader.GetString(5);
