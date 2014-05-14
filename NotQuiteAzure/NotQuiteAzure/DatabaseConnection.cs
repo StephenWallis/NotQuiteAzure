@@ -14,7 +14,7 @@ namespace NotQuiteAzure
     {
         string connectionString = "Server=(local)\\SQLEXPRESS;Initial Catalog=ClaimsReporting;Integrated Security=SSPI";
 
-        public Customer GetCustomer(int customerNumber)
+        public Customer Register(int customerNumber)
         {
             Customer customer = new Customer();
 
@@ -43,7 +43,7 @@ namespace NotQuiteAzure
             return customer;
         }
 
-        public void CreateCall(string customerNumber, string customerPhone)
+        public void CallMe(string customerNumber, string customerPhone)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {     
@@ -58,7 +58,7 @@ namespace NotQuiteAzure
             }
         }
 
-        public void CreateClaim(Claim claim)
+        public void SubmitClaim(Claim claim)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

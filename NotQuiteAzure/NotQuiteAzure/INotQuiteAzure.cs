@@ -18,8 +18,8 @@ namespace NotQuiteAzure
         [OperationContract]
         bool CustomerCallRequest(string id, string customerPhone);
 
-        [OperationContract]
-        bool RecordClaim(Claim claim);
+        //[OperationContract]
+        //bool RecordClaim(Claim claim);
     }
 
 

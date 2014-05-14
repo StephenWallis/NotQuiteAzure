@@ -14,7 +14,7 @@ namespace NotQuiteAzure
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            try { return databaseConnection.GetCustomer(customerNumber); }
+            try { return databaseConnection.Register(customerNumber); }
             catch { return new Customer(); }
         }
 
@@ -24,22 +24,22 @@ namespace NotQuiteAzure
 
             try 
             { 
-                databaseConnection.CreateCall(customerId, customerPhone);
+                databaseConnection.CallMe(customerId, customerPhone);
                 return true;
             }
             catch { return false; }
         }
 
-        public bool RecordClaim(Claim claim)
-        {
-            DatabaseConnection databaseConnection = new DatabaseConnection();
+        //public bool RecordClaim(Claim claim)
+        //{
+        //    DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            try
-            {
-                databaseConnection.CreateClaim(claim);
-                return true;
-            }
-            catch { return false; }
-        }
+        //    try
+        //    {
+        //        databaseConnection.CallMe(claim.customerId, claim.);
+        //        return true;
+        //    }
+        //    catch { return false; }
+        //}
     }
 }
