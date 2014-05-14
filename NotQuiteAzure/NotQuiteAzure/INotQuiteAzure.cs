@@ -16,7 +16,7 @@ namespace NotQuiteAzure
         Customer Register(int id);
 
         [OperationContract]
-        bool CustomerCallRequest(string id, string customerPhone);
+        bool CallMe(string id, string customerPhone);
 
         //[OperationContract]
         //bool RecordClaim(Claim claim);

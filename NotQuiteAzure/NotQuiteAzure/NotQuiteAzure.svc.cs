@@ -18,7 +18,7 @@ namespace NotQuiteAzure
             catch { return new Customer(); }
         }
 
-        public bool CustomerCallRequest(string customerId, string customerPhone)
+        public bool CallMe(string customerId, string customerPhone)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
