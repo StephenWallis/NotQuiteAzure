@@ -1,0 +1,20 @@
+﻿ @model NotQuiteAWebUi.Models.MenuModel
+
+   <ul class="nav nav-tabs nav-top-menu">
+       @Link(MVC.Home.Index(), "Home")
+       @Link(MVC.CallMe.Index(), "Call Me Claims")
+
+   </ul>
+
+    @helper Link(ViewResult action, string text)
+{
+    var currentUrl = String.IsNullOrEmpty(Model.CurrentUrl) ? Request.RawUrl : Model.CurrentUrl;
+    bool isActive = false;    
+   
+    var linkUrl = Url.Action(action);
+    if (currentUrl == linkUrl)
+    {
+        isActive = true;
+    }	
+    <li class="@(isActive ? "active": "")"><a href="@(linkUrl)">@text</a></li>
+}

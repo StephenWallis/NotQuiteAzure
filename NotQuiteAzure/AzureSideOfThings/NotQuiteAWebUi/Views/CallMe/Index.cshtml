@@ -1,0 +1,48 @@
+﻿@using NotQuiteAWebUi.Core
+
+
+@{
+    ViewBag.Title = "Call Me Calls";
+    Layout = "~/Views/_BootStrap.cshtml";
+}
+
+@Html.MainMenu()
+
+<div id="callContainer" class="span12">
+    
+    <div class="callTable">
+        <table id="historyTable" class="span12">
+            <thead>
+                <tr>
+                    <th>Customer Number</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>DOB</th>
+                    <th>Home Phone</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: callMeRecords">
+                <td data-bind="text: customerNumber "></td>
+                <td data-bind="text: name "></td>
+                <td data-bind="text: address "></td>
+                <td data-bind="text: dob "></td>
+                <td data-bind="text: homePhone "></td>
+                <td data-bind="text: phoneNumber "></td>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+
+@section pageScripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            AMI.applyViewModel("#callContainer", function () {
+                return new AMI.CallMeViewModel();
+            });
+        });
+    </script>
+}
