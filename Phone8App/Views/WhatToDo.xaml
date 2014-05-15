@@ -1,0 +1,79 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="AMIClaimReporter.WhatToDo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP8"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding HomeViewModel, Source={StaticResource Locator}}">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="AMI CLAIM REPORTER" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="what to do" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="12,0">
+            <TextBlock Style="{StaticResource PhoneTextAccentStyle}" 
+                       Text="1 - Stop!" />
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"
+                       Text="If you are involved in an vehicle accident, the law says you must stop and help however you can." />
+
+            <TextBlock Style="{StaticResource PhoneTextAccentStyle}" 
+                       Text="2 - Check everyone is OK" />
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"
+                       Text="If someone at the scene has injuries, or is unconscious, call 111 immediately." />
+
+            <TextBlock Style="{StaticResource PhoneTextAccentStyle}" 
+                       Text="3 - Don't admit fault" />
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"
+                       Text="Leave that to the insurance companies to decide." />
+
+            <TextBlock Style="{StaticResource PhoneTextAccentStyle}" 
+                       Text="4 - Get details" />
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"
+                       Text="Use the following screens in this app to record as much as you can." />
+
+            <TextBlock Style="{StaticResource PhoneTextAccentStyle}" 
+                       Text="5 - Report to the Police" />
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"
+                       Text="If anyone is injured, or livestock or animals are involved, you must report the accident to the nearest police station within 24 hours." />
+
+            <TextBlock Style="{StaticResource PhoneTextAccentStyle}" 
+                       Text="6 - Arrange towing" />
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"
+                       Text="If your vehicle can't be driven, arrange for a tow truck." />
+
+            <TextBlock Style="{StaticResource PhoneTextAccentStyle}" 
+                       Text="7 - Remove your contents" />
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" TextWrapping="Wrap"
+                       Text="Take out your contents before your car is towed." />
+        </StackPanel>
+    </Grid>
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="iconPrev" IconUri="/Images/back.png" Text="prev" Click="iconPrev_Click" />
+            <shell:ApplicationBarIconButton x:Name="iconSave" IconUri="/Images/save.png" Text="save" Click="iconSave_Click" />
+            <shell:ApplicationBarIconButton x:Name="iconNext" IconUri="/Images/next.png" Text="next" Click="iconNext_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

@@ -1,0 +1,94 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="AMIClaimReporter.YourClaims"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP8"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding YourClaimsViewModel, Source={StaticResource Locator}}">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Resources>
+            <DataTemplate x:Name="ClaimsListTemplate">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding ClaimDate}" Foreground="Green" FontWeight="Bold" Margin="20,0,0,0"/>
+                    <TextBlock Text=" - "/>
+                    <TextBlock Text="{Binding VehicleRegistration}" />
+                    <TextBlock Text=" ("/>
+                    <TextBlock Text="{Binding VehicleYear}" />
+                    <TextBlock Text="  "/>
+                    <TextBlock Text="{Binding VehicleMake}" />
+                    <TextBlock Text="  "/>
+                    <TextBlock Text="{Binding VehicleModel}" />
+                    <TextBlock Text=")"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Status : " FontWeight="Bold" Margin="50,0,0,0"/>
+                        <TextBlock Text="{Binding ClaimStatus}"/>
+                </StackPanel>
+                </StackPanel>
+
+            </DataTemplate>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="AMI CLAIM REPORTER" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="your claims" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="12">
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" 
+                       TextWrapping="Wrap"
+                       Text="Click below if you have had an accident and wish to record a new claim with AMI. Your claim will not be submitted until you are happy with all the details." ></TextBlock>
+            <Button  x:Name="btnCreateNewClaim"
+                     Content="record new claim"
+                     Click="btnCreateNewClaim_Click">
+                <Custom:Interaction.Triggers>
+                    <Custom:EventTrigger EventName="Click">
+                        <Command:EventToCommand Command="{Binding CreateNewClaimCommand, Mode=OneWay}" />
+                    </Custom:EventTrigger>
+                </Custom:Interaction.Triggers>
+            </Button>
+
+
+            <TextBlock Style="{StaticResource PhoneTextSmallStyle}" 
+                       Margin="12,50,12,0"
+                       TextWrapping="Wrap"
+                       Text="If you have made any previous claims they will be listed below." ></TextBlock>
+            <ListBox ItemsSource="{Binding Claims}" 
+                     ItemTemplate="{StaticResource ClaimsListTemplate}" />
+
+        </StackPanel>
+    </Grid>
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
