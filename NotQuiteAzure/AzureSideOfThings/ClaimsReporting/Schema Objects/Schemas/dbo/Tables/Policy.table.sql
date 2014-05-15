@@ -1,8 +1,14 @@
-﻿CREATE TABLE [dbo].[Policy]
+﻿CREATE TABLE [dbo].[Policy](
+	[policy_ID] [nvarchar](255) NOT NULL,
+	[vehicle_make] [nvarchar](255) NULL,
+	[vehicle_model] [nvarchar](255) NULL,
+	[registration] [nvarchar](255) NOT NULL,
+	[custNo] [nvarchar](255) NOT NULL,
+PRIMARY KEY CLUSTERED 
 (
-	policy_ID nvarchar(255) PRIMARY KEY, 
-	vehicle_make nvarchar(255),
-	vehicle_model nvarchar(255),
-	registration nvarchar(255) NOT NULL,
-	cust_ID nvarchar(255) NOT NULL FOREIGN KEY REFERENCES Customers(cust_ID)
-)
+	[policy_ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+

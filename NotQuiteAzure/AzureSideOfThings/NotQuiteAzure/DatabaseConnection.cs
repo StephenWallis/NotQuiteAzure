@@ -80,13 +80,17 @@ namespace NotQuiteAzure
 
         public void RecordClaim(Claim claim)
         {
+            //TODO: sort out making proper IDs at some point. For now just mash a whole lot of data together and call it an id
+            string policyId = claim.customerId + claim.policy.registration + claim.location.Latitude.ToString() + claim.location.Longitude.ToString();
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand nonqueryCommand = connection.CreateCommand();
                 connection.Open();
 
-                nonqueryCommand.CommandText = "INSERT INTO Policy (vehicle_make, vehicle_model, registration, cust_ID) VALUES (@vehicle_make, @vehicle_model, @registration, @cust_ID)";
+                nonqueryCommand.CommandText = "INSERT INTO Policy (policy_ID, vehicle_make, vehicle_model, registration, custNo) VALUES (@policy_ID, @vehicle_make, @vehicle_model, @registration, @cust_ID)";
 
+                nonqueryCommand.Parameters.AddWithValue("@policy_ID", policyId);
                 nonqueryCommand.Parameters.AddWithValue("@vehicle_make", claim.policy.make);
                 nonqueryCommand.Parameters.AddWithValue("@vehicle_model", claim.policy.model);
                 nonqueryCommand.Parameters.AddWithValue("@registration", claim.policy.registration);
@@ -99,12 +103,12 @@ namespace NotQuiteAzure
                 SqlCommand nonqueryCommand = connection2.CreateCommand();
                 connection2.Open();
 
-                nonqueryCommand.CommandText = "INSERT INTO Claims (cust_ID, longatude, latitude, policy_ID) VALUES (@cust_ID, @longatude, @latitude, @policy_ID)";
+                nonqueryCommand.CommandText = "INSERT INTO Claims (custNo, longatude, latitude, policy_ID) VALUES (@cust_ID, @longatude, @latitude, @policy_ID)";
 
                 nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
                 nonqueryCommand.Parameters.AddWithValue("@longatude", claim.location.Longitude);
                 nonqueryCommand.Parameters.AddWithValue("@latitude", claim.location.Latitude);
-                nonqueryCommand.Parameters.AddWithValue("@policy_ID", "getThisWorkingLater");
+                nonqueryCommand.Parameters.AddWithValue("@policy_ID", policyId);
                 nonqueryCommand.ExecuteNonQuery();
             }
         }
