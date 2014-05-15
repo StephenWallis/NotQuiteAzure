@@ -1,0 +1,13 @@
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.pdb
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.dll
+C:\Work\ItsNotAzure\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.pdb
+C:\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.dll
+C:\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.pdb
+C:\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.dll
+C:\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.pdb
+C:\Work\NotQuiteExigen\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\NotQuiteExigen\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.dll
+C:\Work\NotQuiteExigen\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.dll
+C:\Work\NotQuiteExigen\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\bin\NotQuiteAzure.pdb
+C:\Work\NotQuiteExigen\NotQuiteAzure\NotQuiteAzure\NotQuiteAzure\obj\Debug\NotQuiteAzure.pdb
