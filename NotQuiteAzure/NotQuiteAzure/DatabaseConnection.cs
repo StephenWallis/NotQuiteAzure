@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data.Odbc;
 using System.Globalization;
+using NotQuiteAWebUi.Models;
 
 namespace NotQuiteAzure
 {
@@ -14,7 +15,7 @@ namespace NotQuiteAzure
     {
         string connectionString = "Server=(local)\\SQLEXPRESS;Initial Catalog=ClaimsReporting;Integrated Security=SSPI";
 
-        public Customer GetCustomer(string customerId)
+        public Customer Register(int customerNumber)
         {
             Customer customer = new Customer();
 
@@ -23,15 +24,15 @@ namespace NotQuiteAzure
                 connection.Open();
 
                 using (SqlCommand command = new SqlCommand(
-                    "SELECT TOP 1 cust_ID, fname, lname, DOB, home_phone, work_phone, address, email FROM Customers " +
-                    "WHERE cust_ID = " + customerId, connection))
+                    "SELECT TOP 1 cust_ID, name, custNo, DOB, home_phone, work_phone, address, email FROM Customers " +
+                    "WHERE custNo = " + customerNumber, connection))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         customer.id = reader.GetString(0);
-                        customer.firstName = reader.GetString(1);
-                        customer.lastName = reader.GetString(2);
+                        customer.name = reader.GetString(1);
+                        customer.custNo = reader.GetInt32(2);
                         customer.dateOfBirth = reader.GetDateTime(3);
                         customer.homePhone = reader.GetString(4);
                         customer.workPhone = reader.GetString(5);
@@ -43,22 +44,22 @@ namespace NotQuiteAzure
             return customer;
         }
 
-        public void CreateCall(string customerId, string customerPhone)
+        public void CallMe(string customerNumber, string customerPhone)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {     
                 SqlCommand nonqueryCommand = connection.CreateCommand();
                 connection.Open();
 
-                nonqueryCommand.CommandText = "INSERT INTO Call (cust_ID, phone_number) VALUES (@customerId, @customerPhone)";
+                nonqueryCommand.CommandText = "INSERT INTO Call (custNo, phone_number) VALUES (@customerNumber, @customerPhone)";
 
-                nonqueryCommand.Parameters.Add("@customerId", customerId);
-                nonqueryCommand.Parameters.Add("@customerPhone", customerPhone);
+                nonqueryCommand.Parameters.AddWithValue("@customerNumber", customerNumber);
+                nonqueryCommand.Parameters.AddWithValue("@customerPhone", customerPhone);
                 nonqueryCommand.ExecuteNonQuery();
             }
         }
 
-        public void CreateClaim(Claim claim)
+        public void SubmitClaim(Claim claim)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -67,11 +68,41 @@ namespace NotQuiteAzure
 
                 nonqueryCommand.CommandText = "INSERT INTO Claims (claim_ID, policy_ID, cust_ID) VALUES (@claim_ID, @policy_ID, @cust_ID)";
 
-                nonqueryCommand.Parameters.Add("@claim_ID", claim.id);
-                nonqueryCommand.Parameters.Add("@policy_ID", claim.policyId);
-                nonqueryCommand.Parameters.Add("@cust_ID", claim.customerId);
+                nonqueryCommand.Parameters.AddWithValue("@claim_ID", claim.id);
+                nonqueryCommand.Parameters.AddWithValue("@policy_ID", claim.policyId);
+                nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
                 nonqueryCommand.ExecuteNonQuery();
             }
+        }
+
+        public IEnumerable<CallMeModel> GetClaims()
+        {
+            var result = new List<CallMeModel>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(
+                     "select cus.custno, cus.name, cus.DOB, cus.address, cus.home_phone, c.phone_number from Call c join Customers cus on c.cust_ID = cus.cust_IDs", connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var callMeModel = new CallMeModel
+                        {
+                            CustomerNumber = reader.GetString(0),
+                            Name = reader.GetString(1),
+                            DateOfBirth = reader.GetDateTime(2),
+                            Address = reader.GetString(3),
+                            HomePhone = reader.GetString(4),
+                            PhoneNumber = reader.GetString(5)
+                        };
+
+                        result.Add(callMeModel);
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

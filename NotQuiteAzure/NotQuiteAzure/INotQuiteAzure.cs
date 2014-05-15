@@ -13,13 +13,13 @@ namespace NotQuiteAzure
     public interface INotQuiteAzure
     {
         [OperationContract]
-        Customer Register(string id);
+        Customer Register(int id);
 
         [OperationContract]
-        bool CustomerCallRequest(string id, string customerPhone);
+        bool CallMe(string id, string customerPhone);
 
-        [OperationContract]
-        bool RecordClaim(Claim claim);
+        //[OperationContract]
+        //bool RecordClaim(Claim claim);
     }
 
 

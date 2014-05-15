@@ -10,36 +10,36 @@ namespace NotQuiteAzure
 {
     public class NotQuiteAzure : INotQuiteAzure
     {
-        public Customer Register(string customerId)
+        public Customer Register(int customerNumber)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            try { return databaseConnection.GetCustomer(customerId); }
+            try { return databaseConnection.Register(customerNumber); }
             catch { return new Customer(); }
         }
 
-        public bool CustomerCallRequest(string customerId, string customerPhone)
+        public bool CallMe(string customerId, string customerPhone)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
             try 
             { 
-                databaseConnection.CreateCall(customerId, customerPhone);
+                databaseConnection.CallMe(customerId, customerPhone);
                 return true;
             }
             catch { return false; }
         }
 
-        public bool RecordClaim(Claim claim)
-        {
-            DatabaseConnection databaseConnection = new DatabaseConnection();
+        //public bool RecordClaim(Claim claim)
+        //{
+        //    DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            try
-            {
-                databaseConnection.CreateClaim(claim);
-                return true;
-            }
-            catch { return false; }
-        }
+        //    try
+        //    {
+        //        databaseConnection.CallMe(claim.customerId, claim.);
+        //        return true;
+        //    }
+        //    catch { return false; }
+        //}
     }
 }
