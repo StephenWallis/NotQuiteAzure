@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data.Odbc;
 using System.Globalization;
+using NotQuiteAWebUi.Models;
 
 namespace NotQuiteAzure
 {
@@ -72,6 +73,36 @@ namespace NotQuiteAzure
                 nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
                 nonqueryCommand.ExecuteNonQuery();
             }
+        }
+
+        public IEnumerable<CallMeModel> GetClaims()
+        {
+            var result = new List<CallMeModel>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(
+                     "select cus.custno, cus.name, cus.DOB, cus.address, cus.home_phone, c.phone_number from Call c join Customers cus on c.cust_ID = cus.cust_IDs", connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var callMeModel = new CallMeModel
+                        {
+                            CustomerNumber = reader.GetString(0),
+                            Name = reader.GetString(1),
+                            DateOfBirth = reader.GetDateTime(2),
+                            Address = reader.GetString(3),
+                            HomePhone = reader.GetString(4),
+                            PhoneNumber = reader.GetString(5)
+                        };
+
+                        result.Add(callMeModel);
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
