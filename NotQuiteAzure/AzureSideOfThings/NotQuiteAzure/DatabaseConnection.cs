@@ -78,18 +78,33 @@ namespace NotQuiteAzure
             }
         }
 
-        public void SubmitClaim(Claim claim)
+        public void RecordClaim(Claim claim)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand nonqueryCommand = connection.CreateCommand();
                 connection.Open();
 
-                nonqueryCommand.CommandText = "INSERT INTO Claims (claim_ID, policy_ID, cust_ID) VALUES (@claim_ID, @policy_ID, @cust_ID)";
+                nonqueryCommand.CommandText = "INSERT INTO Policy (vehicle_make, vehicle_model, registration, cust_ID) VALUES (@vehicle_make, @vehicle_model, @registration, @cust_ID)";
 
-                nonqueryCommand.Parameters.AddWithValue("@claim_ID", claim.id);
-                nonqueryCommand.Parameters.AddWithValue("@policy_ID", claim.policyId);
+                nonqueryCommand.Parameters.AddWithValue("@vehicle_make", claim.policy.make);
+                nonqueryCommand.Parameters.AddWithValue("@vehicle_model", claim.policy.model);
+                nonqueryCommand.Parameters.AddWithValue("@registration", claim.policy.registration);
                 nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
+                nonqueryCommand.ExecuteNonQuery();
+            }
+
+            using (SqlConnection connection2 = new SqlConnection(connectionString))
+            {
+                SqlCommand nonqueryCommand = connection2.CreateCommand();
+                connection2.Open();
+
+                nonqueryCommand.CommandText = "INSERT INTO Claims (cust_ID, longatude, latitude, policy_ID) VALUES (@cust_ID, @longatude, @latitude, @policy_ID)";
+
+                nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
+                nonqueryCommand.Parameters.AddWithValue("@longatude", claim.location.Longitude);
+                nonqueryCommand.Parameters.AddWithValue("@latitude", claim.location.Latitude);
+                nonqueryCommand.Parameters.AddWithValue("@policy_ID", "getThisWorkingLater");
                 nonqueryCommand.ExecuteNonQuery();
             }
         }
