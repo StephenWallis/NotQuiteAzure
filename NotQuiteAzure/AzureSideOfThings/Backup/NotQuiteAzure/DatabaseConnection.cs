@@ -8,13 +8,12 @@ using System.Data.OleDb;
 using System.Data.Odbc;
 using System.Globalization;
 using NotQuiteAWebUi.Models;
-using System.Configuration;
 
 namespace NotQuiteAzure
 {
     public class DatabaseConnection
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["SQLAzureConnection"].ToString();
+        string connectionString = "Server=(local)\\SQLEXPRESS;Initial Catalog=ClaimsReporting;Integrated Security=SSPI";
 
         public Customer Register(int customerNumber)
         {
@@ -45,7 +44,7 @@ namespace NotQuiteAzure
 
                 using (SqlCommand command2 = new SqlCommand(
                     "SELECT policy_ID, registration, vehicle_make, vehicle_model FROM Policy " +
-                    "WHERE custno = (SELECT TOP 1 custno FROM Customers WHERE CustNo = " + customerNumber + ")", connection))
+                    "WHERE cust_ID = (SELECT TOP 1 cust_ID FROM Customers WHERE CustNo = " + customerNumber + ")", connection))
                 using (SqlDataReader reader = command2.ExecuteReader())
                 {
                     while (reader.Read())
