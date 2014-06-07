@@ -1,6 +1,13 @@
-﻿CREATE TABLE [dbo].[Claims]
+﻿CREATE TABLE [dbo].[Claims](
+	[claim_ID] [nvarchar](255) NOT NULL,
+	[cust_ID] [nvarchar](255) NOT NULL,
+	[longatude] [nvarchar](255) NOT NULL,
+	[latitude] [nvarchar](255) NOT NULL,
+	[policy_ID] [nvarchar](255) NOT NULL,
+PRIMARY KEY CLUSTERED 
 (
-	claim_ID nvarchar(255) PRIMARY KEY,
-	policy_ID nvarchar(255) NOT NULL FOREIGN KEY REFERENCES Policy(policy_ID),
-	cust_ID nvarchar(255) NOT NULL FOREIGN KEY REFERENCES Customers(cust_ID) 
-)
+	[claim_ID] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+) 
+
+GO

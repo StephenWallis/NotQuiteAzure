@@ -169,9 +169,9 @@ PRINT N'Creating [dbo].[Call]...';
 GO
 CREATE TABLE [dbo].[Call] (
     [phone_number] NVARCHAR (255) NOT NULL,
-    [cust_ID]      NVARCHAR (255) NOT NULL,
-    CONSTRAINT [pk_Call] PRIMARY KEY CLUSTERED ([phone_number] ASC, [cust_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
-);
+    [custNo]       NVARCHAR (255) NOT NULL,
+    CONSTRAINT [pk_Call] PRIMARY KEY CLUSTERED ([phone_number] ASC, [custNo] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+) ON [PRIMARY];
 
 
 GO
@@ -181,10 +181,12 @@ PRINT N'Creating [dbo].[Claims]...';
 GO
 CREATE TABLE [dbo].[Claims] (
     [claim_ID]  NVARCHAR (255) NOT NULL,
-    [policy_ID] NVARCHAR (255) NOT NULL,
     [cust_ID]   NVARCHAR (255) NOT NULL,
-    PRIMARY KEY CLUSTERED ([claim_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
-);
+    [longatude] NVARCHAR (255) NOT NULL,
+    [latitude]  NVARCHAR (255) NOT NULL,
+    [policy_ID] NVARCHAR (255) NOT NULL,
+    PRIMARY KEY CLUSTERED ([claim_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+) ON [PRIMARY];
 
 
 GO
@@ -215,45 +217,9 @@ CREATE TABLE [dbo].[Policy] (
     [vehicle_make]  NVARCHAR (255) NULL,
     [vehicle_model] NVARCHAR (255) NULL,
     [registration]  NVARCHAR (255) NOT NULL,
-    [cust_ID]       NVARCHAR (255) NOT NULL,
-    PRIMARY KEY CLUSTERED ([policy_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
-);
-
-
-GO
-PRINT N'Creating On column: cust_ID...';
-
-
-GO
-ALTER TABLE [dbo].[Call] WITH NOCHECK
-    ADD FOREIGN KEY ([cust_ID]) REFERENCES [dbo].[Customers] ([cust_ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
-GO
-PRINT N'Creating On column: policy_ID...';
-
-
-GO
-ALTER TABLE [dbo].[Claims] WITH NOCHECK
-    ADD FOREIGN KEY ([policy_ID]) REFERENCES [dbo].[Policy] ([policy_ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
-GO
-PRINT N'Creating On column: cust_ID...';
-
-
-GO
-ALTER TABLE [dbo].[Claims] WITH NOCHECK
-    ADD FOREIGN KEY ([cust_ID]) REFERENCES [dbo].[Customers] ([cust_ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-
-GO
-PRINT N'Creating On column: cust_ID...';
-
-
-GO
-ALTER TABLE [dbo].[Policy] WITH NOCHECK
-    ADD FOREIGN KEY ([cust_ID]) REFERENCES [dbo].[Customers] ([cust_ID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+    [custNo]        NVARCHAR (255) NOT NULL,
+    PRIMARY KEY CLUSTERED ([policy_ID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+) ON [PRIMARY];
 
 
 GO
@@ -322,68 +288,6 @@ VALUES("1079607", "027 334 9987");
 
 INSERT INTO Call(cust_ID, phone_number)
 VALUES("2349981", "03 477 8800");
-
-
-GO
-PRINT N'Checking existing data against newly created constraints';
-
-
-GO
-USE [$(DatabaseName)];
-
-
-GO
-
-GO
-CREATE TABLE [#__checkStatus] (
-    [Table]      NVARCHAR (270),
-    [Constraint] NVARCHAR (270),
-    [Where]      NVARCHAR (MAX)
-);
-
-SET NOCOUNT ON;
-
-
-GO
-INSERT INTO [#__checkStatus]
-EXECUTE (N'DBCC CHECKCONSTRAINTS (N''[dbo].[Call]'')
-    WITH NO_INFOMSGS');
-
-IF @@ROWCOUNT > 0
-    BEGIN
-        DROP TABLE [#__checkStatus];
-        RAISERROR (N'An error occured while verifying constraints on table [dbo].[Call]', 16, 127);
-    END
-
-
-GO
-INSERT INTO [#__checkStatus]
-EXECUTE (N'DBCC CHECKCONSTRAINTS (N''[dbo].[Claims]'')
-    WITH NO_INFOMSGS');
-
-IF @@ROWCOUNT > 0
-    BEGIN
-        DROP TABLE [#__checkStatus];
-        RAISERROR (N'An error occured while verifying constraints on table [dbo].[Claims]', 16, 127);
-    END
-
-
-GO
-INSERT INTO [#__checkStatus]
-EXECUTE (N'DBCC CHECKCONSTRAINTS (N''[dbo].[Policy]'')
-    WITH NO_INFOMSGS');
-
-IF @@ROWCOUNT > 0
-    BEGIN
-        DROP TABLE [#__checkStatus];
-        RAISERROR (N'An error occured while verifying constraints on table [dbo].[Policy]', 16, 127);
-    END
-
-
-GO
-SET NOCOUNT OFF;
-
-DROP TABLE [#__checkStatus];
 
 
 GO

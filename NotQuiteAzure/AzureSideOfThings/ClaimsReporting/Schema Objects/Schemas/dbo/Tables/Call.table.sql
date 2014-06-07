@@ -1,6 +1,11 @@
-﻿CREATE TABLE [dbo].[Call]
+﻿CREATE TABLE [dbo].[Call](
+	[phone_number] [nvarchar](255) NOT NULL,
+	[custNo] [nvarchar](255) NOT NULL,
+ CONSTRAINT [pk_Call] PRIMARY KEY CLUSTERED 
 (
-	phone_number nvarchar(255),
-	cust_ID nvarchar(255) NOT NULL FOREIGN KEY REFERENCES Customers(cust_ID),
-	CONSTRAINT pk_Call PRIMARY KEY(phone_number, cust_ID)
-)
+	[phone_number] ASC,
+	[custNo] ASC
+)WITH (STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF)
+) 
+
+GO
