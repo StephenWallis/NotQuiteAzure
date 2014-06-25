@@ -19,6 +19,11 @@ namespace AMIClaimReporter
 
         private void btnCreateNewClaim_Click(object sender, RoutedEventArgs e)
         {
+            NotQuiteAzureClient client = new NotQuiteAzureClient();
+
+            // slsvcutil.exe http://claimsreporterdev.azurewebsites.net/NotQuiteAzure.svc?wsdl
+            // cd C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\Tools
+
             //NotQuiteAzureClient client = new NotQuiteAzureClient();
             //client.
             //// Use the 'client' variable to call operations on the service.

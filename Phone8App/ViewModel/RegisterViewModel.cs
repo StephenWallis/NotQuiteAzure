@@ -94,63 +94,19 @@ namespace AMIClaimReporter.ViewModel
 
         #region Command Object Handlers
 
-        private void Register()
+        void client_RegisterCompleted(object sender, RegisterCompletedEventArgs e)
         {
-            //TODO Remove the debug code
-            switch (_mainModel.CustomerNo)
+            NotQuiteAzure.Customer result = e.Result;
+
+            _mainModel.InsuredPhoneHome = result.homePhone;
+            _mainModel.InsuredPhoneBusiness = result.workPhone;
+            _mainModel.InsuredAddress = result.address;
+            _mainModel.InsuredEmail = result.email;
+
+            _mainModel.SelectedPolicy = null;
+            foreach (NotQuiteAzure.Policy policy in result.Policies)
             {
-                case "1079607":
-                    _mainModel.InsuredPhoneHome = "03 312 8967";
-                    _mainModel.InsuredPhoneBusiness = "03 345 8077";
-                    _mainModel.InsuredAddress = "9128 Random Street, RD24, Kaiapoi, 1895";
-                    _mainModel.InsuredEmail = "bob.jones@hotmail.com";
-
-                    _mainModel.SelectedPolicy = null;
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "1099809M01", VehicleMake = "Toyota", VehicleModel = "Corolla", VehicleYear = "2000", VehicleRegistration = "TER453" });
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "1099809M02", VehicleMake = "Holden", VehicleModel = "Corsa", VehicleYear = "1998", VehicleRegistration = "EJM900" });
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "1099809M03", VehicleMake = "Mazda", VehicleModel = "MX5", VehicleYear = "2010", VehicleRegistration = "MAZ003" });
-
-                    break;
-
-                case "2349981":
-                    _mainModel.InsuredPhoneHome = "03 313 4502";
-                    _mainModel.InsuredPhoneBusiness = "03 344 7867";
-                    _mainModel.InsuredAddress = "Northwood Towers, Ashburton, 7098";
-                    _mainModel.InsuredEmail = "steve.hadwin@hotmail.com";
-
-                    _mainModel.SelectedPolicy = null;
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "2349981M01", VehicleMake = "Ford", VehicleModel = "Focus", VehicleYear = "2007", VehicleRegistration = "EER784" });
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "2349981M02", VehicleMake = "Lotus", VehicleModel = "Elise", VehicleYear = "2012", VehicleRegistration = "HJY458" });
-
-                    break;
-
-                case "1098767":
-                    _mainModel.InsuredPhoneHome = "03 312 7810";
-                    _mainModel.InsuredPhoneBusiness = "03 365 0098";
-                    _mainModel.InsuredAddress = "16 Westbourne Street, Ashburton, 9087";
-                    _mainModel.InsuredEmail = "Tanya1203@hotmail.com";
-
-                    _mainModel.SelectedPolicy = null;
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "1098767M01", VehicleMake = "Vauxhall", VehicleModel = "Vectre", VehicleYear = "1989", VehicleRegistration = "VEC021" });
-
-                    break;
-
-                default:
-                    _mainModel.CustomerNo = "1099809";
-                    _mainModel.InsuredName = "Frank Joseph";
-                    _mainModel.InsuredDob = "08121967";
-
-                    _mainModel.InsuredPhoneHome = "03 312 8967";
-                    _mainModel.InsuredPhoneBusiness = "03 345 8077";
-                    _mainModel.InsuredAddress = "90 North Road, RD5, Kaiapoi, 7698";
-                    _mainModel.InsuredEmail = "Frank1204@hotmail.com";
-
-                    _mainModel.SelectedPolicy = null;
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "1099809M01", VehicleMake = "Toyota", VehicleModel = "Corolla", VehicleYear = "2000", VehicleRegistration = "TER453" });
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "1099809M02", VehicleMake = "Holden", VehicleModel = "Corsa", VehicleYear = "1998", VehicleRegistration = "EJM900" });
-                    _mainModel.Policies.Add(new Policy { PolicyNo = "1099809M03", VehicleMake = "Mazda", VehicleModel = "MX5", VehicleYear = "2010", VehicleRegistration = "MAZ003" });
-
-                    break;
+                _mainModel.Policies.Add(new Policy { PolicyNo = policy.id, VehicleMake = policy.make, VehicleModel = policy.model, VehicleYear = "2000", VehicleRegistration = policy.registration });
             }
 
             IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
@@ -171,7 +127,25 @@ namespace AMIClaimReporter.ViewModel
 
             Claim newClaim = new Model.Claim();
 
+
+
+
+
+
+
+
+            var rootFrame = (App.Current as App).RootFrame;
+            rootFrame.Navigate(new Uri("/Views/Home.xaml", UriKind.Relative));
         }
+
+        private void Register()
+        {
+            NotQuiteAzureClient client = new NotQuiteAzureClient();
+            client.RegisterCompleted += client_RegisterCompleted;
+            client.RegisterAsync(_mainModel.CustomerNo);
+
+        }
+
 
         #endregion
 

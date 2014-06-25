@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_INotQuiteAzure" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://claimsreporterdev.azurewebsites.net/NotQuiteAzure.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_INotQuiteAzure"
+                contract="INotQuiteAzure" name="BasicHttpBinding_INotQuiteAzure" />
+        </client>
+    </system.serviceModel>
+</configuration>

@@ -77,16 +77,17 @@ namespace AMIClaimReporter.ViewModel
         /// </summary>
         public YourLocationViewModel()
         {
-            if (_mainModel.CurrentLocation!=null)
-            {
-                MapCenter = _mainModel.CurrentLocation;
-                MapZoomLevel = 15;               
-            }
-            else
-            {
-                MapCenter = new GeoCoordinate(-41.266484996303916, 173.78600458614528);
-                MapZoomLevel = 5;
-            }
+            //TODO
+            //if (_mainModel.CurrentLocation!=null)
+            //{
+            //    MapCenter = _mainModel.CurrentLocation;
+            //    MapZoomLevel = 15;               
+            //}
+            //else
+            //{
+            //    MapCenter = new GeoCoordinate(-41.266484996303916, 173.78600458614528);
+            //    MapZoomLevel = 5;
+            //}
 
 
             DoneCommand = new RelayCommand(() => Done());
