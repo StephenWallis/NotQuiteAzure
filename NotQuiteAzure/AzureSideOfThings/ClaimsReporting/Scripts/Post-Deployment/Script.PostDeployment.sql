@@ -11,9 +11,9 @@ SET DATEFORMAT DMY
 
 INSERT INTO Customers([cust_ID],[custNo],[Name],[DOB],[home_phone],[work_phone],[address],[email])
 VALUES
-('1079607', 0, 'Bob Jones', '12/3/1982', '03 312 8967', '03 345 8077', '128 Random Street, RD24, Kaiapoi, 1895', 'bob.jones@hotmail.com'),
-('2349981', 1, 'Steve Hadwin', '12/9/1966', '03 313 4502', '03 344 7867', 'Northwood Towers, Ashburton, 7098', 'steve.hadwin@hotmail.com'),
-('1098767', 2, 'Tanya Smith', '12/3/1967', '03 312 7810', '03 365 0098', '16 Westbourne Street, Ashburton, 9087', 'tanya1203@hotmail.com');
+('1079607', 1079607, 'Bob Jones', '12/3/1982', '03 312 8967', '03 345 8077', '128 Random Street, RD24, Kaiapoi, 1895', 'bob.jones@hotmail.com'),
+('2349981', 2349981, 'Steve Hadwin', '12/9/1966', '03 313 4502', '03 344 7867', 'Northwood Towers, Ashburton, 7098', 'steve.hadwin@hotmail.com'),
+('1098767', 1098767, 'Tanya Smith', '12/3/1967', '03 312 7810', '03 365 0098', '16 Westbourne Street, Ashburton, 9087', 'tanya1203@hotmail.com');
 GO
 
 
