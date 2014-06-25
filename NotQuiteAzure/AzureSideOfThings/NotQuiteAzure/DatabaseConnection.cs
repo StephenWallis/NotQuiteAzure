@@ -16,7 +16,7 @@ namespace NotQuiteAzure
     {
         string connectionString = ConfigurationManager.ConnectionStrings["SQLAzureConnection"].ToString();
 
-        public Customer Register(int customerNumber)
+        public Customer Register(string customerId)
         {
             Customer customer = new Customer();
 
@@ -26,7 +26,7 @@ namespace NotQuiteAzure
 
                 using (SqlCommand command = new SqlCommand(
                     "SELECT TOP 1 cust_ID, name, custNo, DOB, home_phone, work_phone, address, email FROM Customers " +
-                    "WHERE custNo = " + customerNumber, connection))
+                    "WHERE cust_ID = " + customerId, connection))
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -45,7 +45,7 @@ namespace NotQuiteAzure
 
                 using (SqlCommand command2 = new SqlCommand(
                     "SELECT policy_ID, registration, vehicle_make, vehicle_model FROM Policy " +
-                    "WHERE custno = (SELECT TOP 1 custno FROM Customers WHERE CustNo = " + customerNumber + ")", connection))
+                    "WHERE custno = (SELECT TOP 1 custno FROM Customers WHERE CustNo = " + customerId + ")", connection))
                 using (SqlDataReader reader = command2.ExecuteReader())
                 {
                     while (reader.Read())
