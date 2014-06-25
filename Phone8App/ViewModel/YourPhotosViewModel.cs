@@ -323,7 +323,10 @@ namespace AMIClaimReporter.ViewModel
                         _fullImagePath = targetStream.Name;
                         CurrentPicture.FullImagePath = new Uri(_fullImagePath, UriKind.Absolute);
 
-                        //RaisePropertyChanged("CurrentPicture");
+                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            RaisePropertyChanged("CurrentPicture");
+                        });
 
                         // Initialize the buffer for 4KB disk pages.
                         byte[] readBuffer = new byte[4096];
@@ -371,6 +374,12 @@ namespace AMIClaimReporter.ViewModel
                         {
                             targetStream.Write(readBuffer, 0, bytesRead);
                         }
+
+                        System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            RaisePropertyChanged("ThumbnailPath");
+                        });
+
                     }
                 }
 

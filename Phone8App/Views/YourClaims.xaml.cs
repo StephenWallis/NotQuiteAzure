@@ -19,7 +19,7 @@ namespace AMIClaimReporter
 
         private void btnCreateNewClaim_Click(object sender, RoutedEventArgs e)
         {
-            NotQuiteAzureClient client = new NotQuiteAzureClient();
+            //NotQuiteAzureClient client = new NotQuiteAzureClient();
             //client.
             //// Use the 'client' variable to call operations on the service.
             //client.
