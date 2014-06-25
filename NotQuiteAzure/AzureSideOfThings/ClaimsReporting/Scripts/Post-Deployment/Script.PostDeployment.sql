@@ -20,12 +20,12 @@ GO
 /*Policy*/
 INSERT INTO Policy(policy_ID, custno, vehicle_make, vehicle_model, registration)
 VALUES
-('1079607M01', 0 , 'Skoda', 'Fabia', 'EUH509'),
-('1079607M02', 0, 'Toyota', 'Hilux Surf', 'EBY567'),
-('1079607M03', 0, 'Vauxhall', 'Astra', 'EDF524'),
-('2349981M01', 1, 'Hyundai', 'Santa Fe', 'EEE443'),
-('1098767M01', 2, 'Toyota', 'Starlet', 'LTK007'),
-('1098767M02', 2, 'Porche', '911', 'ALG800');
+('1079607M01', 1079607 , 'Skoda', 'Fabia', 'EUH509'),
+('1079607M02', 1079607, 'Toyota', 'Hilux Surf', 'EBY567'),
+('1079607M03', 1079607, 'Vauxhall', 'Astra', 'EDF524'),
+('2349981M01', 2349981, 'Hyundai', 'Santa Fe', 'EEE443'),
+('1098767M01', 1098767, 'Toyota', 'Starlet', 'LTK007'),
+('1098767M02', 1098767, 'Porche', '911', 'ALG800');
 
 /*Claims*/
 
@@ -38,5 +38,5 @@ VALUES
 
 INSERT INTO Call(custno, phone_number)
 VALUES
-(0, '027 334 9987'),
-(1, '03 477 8800');
+(1079607, '027 334 9987'),
+(2349981, '03 477 8800');
