@@ -31,18 +31,16 @@ namespace NotQuiteAzure
             catch { return false; }
         }
 
-        public string RegisterClaim(string customerId, double longitude, double latitude, 
-            string vehicleMake, string vehicleModel, string vehicleRegistration)
+        public string RegisterClaim(string customerId, double longitude, double latitude, string policyNumber)
         {
             GeoCoordinate location = new GeoCoordinate() { Latitude = latitude, Longitude = longitude };
-            Policy policy = new Policy { make = vehicleMake, model = vehicleModel, registration = vehicleRegistration };
-            Claim claim = new Claim() { customerId = customerId, location = location, policy = policy };
+            Claim claim = new Claim() { customerId = customerId, location = location };
 
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
             try
             {
-                return databaseConnection.RegisterClaim(claim);
+                return databaseConnection.RegisterClaim(claim, policyNumber);
             }
             catch { return "ERROR! DANGER! CHAOS! BAD-STUFF!"; }
         }

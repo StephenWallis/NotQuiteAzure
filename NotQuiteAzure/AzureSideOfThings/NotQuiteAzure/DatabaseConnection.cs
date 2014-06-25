@@ -79,31 +79,13 @@ namespace NotQuiteAzure
             }
         }
 
-        public string RegisterClaim(Claim claim)
+        public string RegisterClaim(Claim claim, string policyNumber)
         {
-            //TODO: sort out making proper IDs at some point. For now just mash a whole lot of data together and call it an id
-            string policyId = claim.customerId + claim.policy.registration + claim.location.Latitude.ToString() + claim.location.Longitude.ToString();
-
+            int id = 0;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand nonqueryCommand = connection.CreateCommand();
-                connection.Open();
-
-                nonqueryCommand.CommandText = "INSERT INTO Policy (policy_ID, vehicle_make, vehicle_model, registration, custNo) VALUES (@policy_ID, @vehicle_make, @vehicle_model, @registration, @cust_ID)";
-
-                nonqueryCommand.Parameters.AddWithValue("@policy_ID", policyId);
-                nonqueryCommand.Parameters.AddWithValue("@vehicle_make", claim.policy.make);
-                nonqueryCommand.Parameters.AddWithValue("@vehicle_model", claim.policy.model);
-                nonqueryCommand.Parameters.AddWithValue("@registration", claim.policy.registration);
-                nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
-                nonqueryCommand.ExecuteNonQuery();
-            }
-
-            int id = 0;
-            using (SqlConnection connection2 = new SqlConnection(connectionString))
-            {
                 using (SqlCommand command2 = new SqlCommand(
-                    "SELECT COUNT(*) FROM Claims", connection2))
+                    "SELECT COUNT(*) FROM Claims", connection))
                 using (SqlDataReader reader = command2.ExecuteReader())
                 {
                     while (reader.Read())
@@ -114,10 +96,10 @@ namespace NotQuiteAzure
             }
 
             string claimId = claim.customerId.ToString().PadLeft(9, '0') + "CLM" + id.ToString().PadLeft(4, '0');
-            using (SqlConnection connection3 = new SqlConnection(connectionString))
+            using (SqlConnection connection2 = new SqlConnection(connectionString))
             {
-                SqlCommand nonqueryCommand = connection3.CreateCommand();
-                connection3.Open();
+                SqlCommand nonqueryCommand = connection2.CreateCommand();
+                connection2.Open();
 
                 nonqueryCommand.CommandText = "INSERT INTO Claims (claim_ID, cust_ID, longatude, latitude, policy_ID) VALUES (@claim_ID, @cust_ID, @longatude, @latitude, @policy_ID)";
 
@@ -125,7 +107,7 @@ namespace NotQuiteAzure
                 nonqueryCommand.Parameters.AddWithValue("@cust_ID", claim.customerId);
                 nonqueryCommand.Parameters.AddWithValue("@longatude", claim.location.Longitude);
                 nonqueryCommand.Parameters.AddWithValue("@latitude", claim.location.Latitude);
-                nonqueryCommand.Parameters.AddWithValue("@policy_ID", policyId);
+                nonqueryCommand.Parameters.AddWithValue("@policy_ID", policyNumber);
                 nonqueryCommand.ExecuteNonQuery();
             }
 
