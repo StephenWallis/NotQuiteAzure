@@ -19,7 +19,8 @@ namespace NotQuiteAzure
         bool CallMe(string id, string customerPhone);
 
         [OperationContract]
-        bool RecordClaim(Claim claim);
+        string RegisterClaim(string customerId, double longitude, double latitude,
+            string vehicleMake, string vehicleModel, string vehicleRegistration);
     }
 
 

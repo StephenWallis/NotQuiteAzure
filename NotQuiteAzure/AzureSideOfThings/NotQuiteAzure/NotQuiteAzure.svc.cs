@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Device.Location;
 
 namespace NotQuiteAzure
 {
@@ -30,16 +31,20 @@ namespace NotQuiteAzure
             catch { return false; }
         }
 
-        public bool RecordClaim(Claim claim)
+        public string RegisterClaim(string customerId, double longitude, double latitude, 
+            string vehicleMake, string vehicleModel, string vehicleRegistration)
         {
+            GeoCoordinate location = new GeoCoordinate() { Latitude = latitude, Longitude = longitude };
+            Policy policy = new Policy { make = vehicleMake, model = vehicleModel, registration = vehicleRegistration };
+            Claim claim = new Claim() { customerId = customerId, location = location, policy = policy };
+
             DatabaseConnection databaseConnection = new DatabaseConnection();
 
             try
             {
-                databaseConnection.RecordClaim(claim);
-                return true;
+                return databaseConnection.RegisterClaim(claim);
             }
-            catch { return false; }
+            catch { return "ERROR! DANGER! CHAOS! BAD-STUFF!"; }
         }
     }
 }
