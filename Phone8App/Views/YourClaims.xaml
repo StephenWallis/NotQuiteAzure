@@ -22,7 +22,7 @@
             <DataTemplate x:Name="ClaimsListTemplate">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding ClaimDate}" Foreground="Green" FontWeight="Bold" Margin="20,0,0,0"/>
+                        <TextBlock Text="{Binding ClaimNo}" Foreground="Green" FontWeight="Bold" Margin="20,0,0,0"/>
                     <TextBlock Text=" - "/>
                     <TextBlock Text="{Binding VehicleRegistration}" />
                     <TextBlock Text=" ("/>

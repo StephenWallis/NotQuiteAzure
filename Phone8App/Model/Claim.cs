@@ -8,6 +8,7 @@ namespace AMIClaimReporter.Model
 {
     public class Claim
     {
+        public string ClaimNo { get; set; }
         public string ClaimDate { get; set; }
         public string ClaimStatus { get; set; }
         public string InsuredName { get; set; }

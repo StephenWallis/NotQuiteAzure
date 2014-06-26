@@ -51,6 +51,7 @@ namespace AMIClaimReporter.ViewModel
 
         void client_SubmitCompleted(object sender, RegisterClaimCompletedEventArgs e)
         {
+            _mainModel.Claims[_mainModel.Claims.Count - 1].ClaimNo = e.Result.ToString();
             var rootFrame = (App.Current as App).RootFrame;
             rootFrame.Navigate(new Uri("/Views/WhatNext.xaml", UriKind.Relative));
         }

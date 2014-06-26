@@ -127,13 +127,6 @@ namespace AMIClaimReporter.ViewModel
 
             Claim newClaim = new Model.Claim();
 
-
-
-
-
-
-
-
             var rootFrame = (App.Current as App).RootFrame;
             rootFrame.Navigate(new Uri("/Views/Home.xaml", UriKind.Relative));
         }

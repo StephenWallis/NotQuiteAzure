@@ -16,7 +16,7 @@ namespace AMIClaimReporter
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Views/Home.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/Views/Home.xaml", UriKind.Relative));
         }
 
         private void btnScan_Click(object sender, RoutedEventArgs e)

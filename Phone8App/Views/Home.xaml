@@ -46,7 +46,7 @@
                        Text="To record a new claim, or get an update about a current claim click below." />
             <Button x:Name="btnClaims" Content="claims" Click="btnClaims_Click" />
 
-            <Button x:Name="btnReset" Content="reset" Margin="0,100,0,0" Click="btnReset_Click" />
+            <Button x:Name="btnReset" Content="reset" Margin="0,100,0,0" Click="btnReset_Click" Visibility="Collapsed" />
         </StackPanel>
     </Grid>
 

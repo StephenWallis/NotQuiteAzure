@@ -55,10 +55,11 @@ namespace AMIClaimReporter.ViewModel
         private void CreateNewClaim()
         {
             Claim newClaim=new Model.Claim();
+            newClaim.ClaimNo = "";
             newClaim.InsuredName = _mainModel.InsuredName;
             newClaim.InsuredDob = _mainModel.InsuredDob;
             newClaim.ClaimDate = DateTime.Now.ToString("dd/MM/yyyy");
-            newClaim.ClaimStatus = "Not Submitted";
+            newClaim.ClaimStatus = "Submitted";
 
             _mainModel.SelectedClaim = newClaim;
             _mainModel.Claims.Add(newClaim);
