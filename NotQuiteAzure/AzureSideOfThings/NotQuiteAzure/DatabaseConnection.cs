@@ -15,7 +15,7 @@ namespace NotQuiteAzure
     public class DatabaseConnection
     {
         string connectionString = ConfigurationManager.ConnectionStrings["SQLAzureConnection"].ToString();
-
+        
         public Customer Register(int customerNumber)
         {
             Customer customer = new Customer();
@@ -142,6 +142,129 @@ namespace NotQuiteAzure
             }
 
             return result;
+        }
+
+        public List<Customer> GetCustomers()
+        {
+            var result = new List<Customer>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT custNo, Name, DOB, home_phone, work_phone, address, email "+
+                    "FROM Customers", connection
+                    ))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new Customer
+                        {
+                            custNo = reader.GetInt32(0),
+                            name = reader.GetString(1),
+                            dateOfBirth = reader.GetDateTime(2),
+                            homePhone = reader.GetString(3),
+                            workPhone = reader.GetString(4),
+                            address = reader.GetString(5),
+                            email = reader.GetString(6)
+                        });
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<ClaimReference> GetAllClaims()
+        {
+            var result = new List<ClaimReference>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT claim_ID, policy_ID, cust_ID, longatude, latitude "+
+                    "FROM Claims", connection
+                    ))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new ClaimReference
+                        {
+                          claimId = reader.GetString(0),
+                          policyId = reader.GetString(1),
+                          customerId = reader.GetString(2),
+                          longatude = reader.GetString(3),
+                          latitude = reader.GetString(4)
+                        });
+                    }
+                }
+            }
+            return result;
+        
+        }
+
+        public List<Policy> GetPolicies()
+        {
+            var result = new List<Policy>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT policy_ID, custNo, vehicle_make, vehicle_model, registration " +
+                    "FROM Policy", connection
+                    ))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new Policy()
+                        {
+                            id = reader.GetString(0),
+                            customerId = reader.GetString(1),
+                            make = reader.GetString(2),
+                            model = reader.GetString(3),
+                            registration = reader.GetString(4)
+                        });
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<Call> GetCalls()
+        {
+            var result = new List<Call>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT Name, Call.custNo, phone_number " +
+                    "FROM Call, Customers "+
+                    "WHERE Call.custNo = Customers.custNo", connection
+                    ))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new Call()
+                        {
+                            name = reader.GetString(0),
+                            custNo = int.Parse(reader.GetString(1)),
+                            callNo = reader.GetString(2)
+                        });
+                    }
+                }
+            }
+            return result;
+
         }
     }
 }

@@ -11,5 +11,6 @@ namespace NotQuiteAzure
 	    public string make { get; set; }
 	    public string model { get; set; }
         public string registration { get; set; }
+        public string customerId { get; set; }
     }
 }
