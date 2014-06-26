@@ -17,6 +17,7 @@ namespace AMIClaimReporter.ViewModel
         #region Commands
 
         public RelayCommand CreateNewClaimCommand { get; private set; }
+        public RelayCommand CallMeCommand { get; private set; }
 
         #endregion
 
@@ -28,6 +29,7 @@ namespace AMIClaimReporter.ViewModel
         public HomeViewModel()
         {
             CreateNewClaimCommand = new RelayCommand(() => CreateNewClaim());
+            CallMeCommand = new RelayCommand(() => CallMe());
         }
 
         #endregion
@@ -41,6 +43,13 @@ namespace AMIClaimReporter.ViewModel
             _mainModel.SelectedClaim = newClaim;
             _mainModel.Claims.Add(newClaim);
 
+        }
+
+        private void CallMe()
+        {
+            NotQuiteAzureClient client = new NotQuiteAzureClient();
+            //client.RegisterCompleted += client_RegisterCompleted;
+            client.CallMeAsync(_mainModel.CustomerNo, "021 1759 635");
         }
 
         #endregion

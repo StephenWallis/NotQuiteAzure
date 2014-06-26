@@ -14,7 +14,7 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True"
-    DataContext="{Binding HomeViewModel, Source={StaticResource Locator}}">
+    DataContext="{Binding SubmitClaimViewModel, Source={StaticResource Locator}}">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -39,7 +39,13 @@
                        Margin="12,50,12,0"
                        TextWrapping="Wrap"
                        Text="If you are happy to submit your claim now click the Submit claim now button below." />
-            <Button x:Name="btnSubmit" Content="Submit claim now" Click="btnSubmit_Click" />
+            <Button x:Name="btnSubmit" Content="Submit claim now" Click="btnSubmit_Click" >
+                <Custom:Interaction.Triggers>
+                    <Custom:EventTrigger EventName="Click">
+                        <Command:EventToCommand Command="{Binding SubmitCommand, Mode=OneWay}" />
+                    </Custom:EventTrigger>
+                </Custom:Interaction.Triggers>
+            </Button>
         </StackPanel>
     </Grid>
 

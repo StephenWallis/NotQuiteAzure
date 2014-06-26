@@ -37,10 +37,10 @@ namespace AMIClaimReporter
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            var _viewModel = (new ViewModelLocator()).YourLocationViewModel;
-            _viewModel.DoneCommand.Execute(null);
+            //var _viewModel = (new ViewModelLocator()).YourLocationViewModel;
+            //_viewModel.DoneCommand.Execute(null);
 
-            NavigationService.Navigate(new Uri("/Views/WhatNext.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/Views/WhatNext.xaml", UriKind.Relative));
         }
 
     }

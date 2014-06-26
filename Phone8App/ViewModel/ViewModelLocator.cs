@@ -37,6 +37,7 @@ namespace AMIClaimReporter.ViewModel
             SimpleIoc.Default.Register<YourDetailsViewModel>();
             SimpleIoc.Default.Register<YourLocationViewModel>();
             SimpleIoc.Default.Register<YourVehicleViewModel>();
+            SimpleIoc.Default.Register<SubmitClaimViewModel>();
 
             SimpleIoc.Default.Register<MainModel>();
         }
@@ -148,6 +149,19 @@ namespace AMIClaimReporter.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainModel>();
+            }
+        }
+
+
+        /// <summary>
+        /// Gets the MainModel property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This non-static member is needed for data binding purposes.")]
+        public SubmitClaimViewModel SubmitClaimViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SubmitClaimViewModel>();
             }
         }
     }

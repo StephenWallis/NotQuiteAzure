@@ -77,9 +77,8 @@ namespace AMIClaimReporter.ViewModel
 
             try
             {
-                //TODO
-                //Geoposition geoposition = await geolocator.GetGeopositionAsync(maximumAge: TimeSpan.FromMinutes(5), timeout: TimeSpan.FromSeconds(10));
-                //_mainModel.CurrentLocation = geoposition.Coordinate.ToGeoCoordinate();
+                Geoposition geoposition = await geolocator.GetGeopositionAsync(maximumAge: TimeSpan.FromMinutes(5), timeout: TimeSpan.FromSeconds(10));
+                _mainModel.CurrentLocation = geoposition.Coordinate.ToGeoCoordinate();
 
             }
             catch (Exception ex)
@@ -96,7 +95,6 @@ namespace AMIClaimReporter.ViewModel
                 }
             }
         }
-
 
     }
 }
