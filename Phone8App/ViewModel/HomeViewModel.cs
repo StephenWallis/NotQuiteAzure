@@ -13,11 +13,34 @@ namespace AMIClaimReporter.ViewModel
     public class HomeViewModel : ViewModelBase
     {
         MainModel _mainModel = (new ViewModelLocator()).MainModel;
+        string _callMeText = "Yes, please call me....";
 
         #region Commands
 
         public RelayCommand CreateNewClaimCommand { get; private set; }
         public RelayCommand CallMeCommand { get; private set; }
+
+        #endregion
+
+        #region Properties
+
+        public string CallMeText
+        {
+            get
+            {
+                return _callMeText;
+            }
+
+            set
+            {
+                if (value != _callMeText)
+                {
+                    _callMeText = value;
+                    RaisePropertyChanged("CallMeText");
+                }
+            }
+        }
+
 
         #endregion
 
@@ -48,10 +71,18 @@ namespace AMIClaimReporter.ViewModel
         private void CallMe()
         {
             NotQuiteAzureClient client = new NotQuiteAzureClient();
-            //client.RegisterCompleted += client_RegisterCompleted;
+            client.CallMeCompleted += client_CallMeCompleted;
             client.CallMeAsync(_mainModel.CustomerNo, "021 1759 635");
         }
 
+        void client_CallMeCompleted(object sender, CallMeCompletedEventArgs e)
+        {
+            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                CallMeText = "We will call you soon";
+                RaisePropertyChanged("CallMeText");
+            });
+        }
         #endregion
 
     }

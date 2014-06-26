@@ -46,15 +46,15 @@ namespace AMIClaimReporter.ViewModel
         {
             NotQuiteAzureClient client = new NotQuiteAzureClient();
             client.RegisterClaimCompleted += client_SubmitCompleted;
-            client.RegisterClaimAsync("CRAP", 1.11, 2.22, "123456789"); 
+            client.RegisterClaimAsync(_mainModel.CustomerNo, _mainModel.CurrentLocation.Longitude, _mainModel.CurrentLocation.Latitude, "M01");
         }
-
 
         void client_SubmitCompleted(object sender, RegisterClaimCompletedEventArgs e)
         {
             var rootFrame = (App.Current as App).RootFrame;
             rootFrame.Navigate(new Uri("/Views/WhatNext.xaml", UriKind.Relative));
         }
+
         #endregion
     }
 }

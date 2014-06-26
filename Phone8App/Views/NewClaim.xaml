@@ -36,7 +36,7 @@
             <TextBlock Style="{StaticResource PhoneTextSmallStyle}" 
                        TextWrapping="Wrap"
                        Text="Would you like us to call you?" />
-            <Button x:Name="btnCallMe" Content="Yes, please call me" >
+            <Button x:Name="btnCallMe"  Content="{Binding CallMeText,Mode=TwoWay}" >
                 <Custom:Interaction.Triggers>
                     <Custom:EventTrigger EventName="Click">
                         <Command:EventToCommand Command="{Binding CallMeCommand, Mode=OneWay}" />
