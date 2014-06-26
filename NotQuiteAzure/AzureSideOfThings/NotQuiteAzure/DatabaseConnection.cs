@@ -81,19 +81,20 @@ namespace NotQuiteAzure
 
         public string RegisterClaim(Claim claim, string policyNumber)
         {
-            int id = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command2 = new SqlCommand(
-                    "SELECT COUNT(*) FROM Claims", connection))
-                using (SqlDataReader reader = command2.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        id = reader.GetInt32(0);
-                    }
-                }
-            }
+            Random random = new Random();
+            int id = random.Next(0, 100);
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    using (SqlCommand command2 = new SqlCommand(
+            //        "SELECT COUNT(*) FROM Claims", connection))
+            //    using (SqlDataReader reader = command2.ExecuteReader())
+            //    {
+            //        while (reader.Read())
+            //        {
+            //            id = reader.GetInt32(0);
+            //        }
+            //    }
+            //}
 
             string claimId = claim.customerId.ToString().PadLeft(9, '0') + "CLM" + id.ToString().PadLeft(4, '0');
             using (SqlConnection connection2 = new SqlConnection(connectionString))
