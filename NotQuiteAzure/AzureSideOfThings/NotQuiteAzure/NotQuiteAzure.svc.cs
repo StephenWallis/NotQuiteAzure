@@ -42,7 +42,7 @@ namespace NotQuiteAzure
             {
                 return databaseConnection.RegisterClaim(claim, policyNumber);
             }
-            catch { return "ERROR! DANGER! CHAOS! BAD-STUFF!"; }
+            catch { return "ERROR!! DANGER!! CHAOS!! BAD-STUFF!!"; }
         }
     }
 }
