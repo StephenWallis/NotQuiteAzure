@@ -45,7 +45,7 @@ namespace NotQuiteAzure
 
                 using (SqlCommand command2 = new SqlCommand(
                     "SELECT policy_ID, registration, vehicle_make, vehicle_model FROM Policy " +
-                    "WHERE custno = (SELECT TOP 1 custno FROM Customers WHERE CustNo = " + customerId + ")", connection))
+                    "WHERE custno = (SELECT TOP 1 custno FROM Customers WHERE CustNo = " + customer.custNo + ")", connection))
                 using (SqlDataReader reader = command2.ExecuteReader())
                 {
                     while (reader.Read())
